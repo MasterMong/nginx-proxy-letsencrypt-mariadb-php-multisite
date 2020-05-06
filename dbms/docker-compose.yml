@@ -1,0 +1,21 @@
+version: "3"
+services:
+  dbms:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    volumes:
+      - ./mysql/data/:/var/lib/mysql
+      - ./mysql/etc/:/etc/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootPSSWD
+      - MYSQL_DATABASE=dbName
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=adminPSSWD
+    # ports:
+    #   - 3306:3306
+      
+networks:
+  default:
+    external:
+      name: nginx-proxy
